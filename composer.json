@@ -1,0 +1,27 @@
+{
+    "name": "chinayin/mns-sdk-php",
+    "description": "Aliyun MNS SDK for PHP",
+    "keywords": ["aliyun", "mns", "queue"],
+    "homepage": "http://www.aliyun.com/product/mns/",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aliyuncs",
+            "homepage": "http://www.aliyun.com"
+        }
+    ],
+    "version":"1.0.0",
+    "require": {
+        "php":">=5.5",
+        "guzzlehttp/guzzle": "^6.2.1",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev" : {
+    },
+    "autoload": {
+        "psr-4": {
+            "AliyunMNS\\": "src/"
+        }
+    }
+}
