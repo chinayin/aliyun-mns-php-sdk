@@ -1,0 +1,27 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+*~
+bower_components
+# vs
+.vscode
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+# Mac-specific directory that no other operating system needs.
+.DS_Store
+# Java
+*.class
+hs_err_pid*
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+# Package Files #
+*.jar
+*.war
+*.ear
+*.log
+# php cs fixer
+.php_cs.cache
