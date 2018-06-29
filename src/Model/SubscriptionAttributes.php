@@ -8,6 +8,7 @@ class SubscriptionAttributes
     private $endpoint;
     private $strategy;
     private $contentFormat;
+    private $filterTag;
 
     # may change in AliyunMNS\Topic
     private $topicName;
@@ -38,9 +39,9 @@ class SubscriptionAttributes
 
         $this->topicOwner = $topicOwner;
         $this->createTime = $createTime;
-        $this->lastModifyTime = $lastModifyTime; 
+        $this->lastModifyTime = $lastModifyTime;
     }
-    
+
     public function getEndpoint()
     {
         return $this->endpoint;
@@ -69,6 +70,16 @@ class SubscriptionAttributes
     public function setContentFormat($contentFormat)
     {
         $this->contentFormat = $contentFormat;
+    }
+
+    public function getFilterTag()
+    {
+        return $this->filterTag;
+    }
+
+    public function setFilterTag($filterTag)
+    {
+        $this->filterTag = $filterTag;
     }
 
     public function getTopicName()
@@ -114,6 +125,10 @@ class SubscriptionAttributes
         if ($this->contentFormat != NULL)
         {
             $xmlWriter->writeElement(Constants::CONTENT_FORMAT, $this->contentFormat);
+        }
+        if ($this->filterTag != NULL)
+        {
+            $xmlWriter->writeElement(Constants::FILTER_TAG, $this->filterTag);
         }
     }
 
@@ -173,6 +188,13 @@ class SubscriptionAttributes
                         $contentFormat = $xmlReader->value;
                     }
                     break;
+                case 'FilterTag':
+                    $xmlReader->read();
+                    if ($xmlReader->nodeType == \XMLReader::TEXT)
+                    {
+                        $filterTag = $xmlReader->value;
+                    }
+                    break;
                 case 'CreateTime':
                     $xmlReader->read();
                     if ($xmlReader->nodeType == \XMLReader::TEXT)
@@ -200,6 +222,7 @@ class SubscriptionAttributes
             $topicOwner,
             $createTime,
             $lastModifyTime);
+        $attributes->setFilterTag($filterTag);
         return $attributes;
     }
 }

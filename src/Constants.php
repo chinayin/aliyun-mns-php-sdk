@@ -57,6 +57,7 @@ class Constants
     const RECEIVER = "Receiver";
     const SMS_PARAMS = "SmsParams";
     const IMPORTANCE_LEVEL = "ImportanceLevel";
+    const FILTER_TAG = "FilterTag";
 
     // some MNS ErrorCodes
     const INVALID_ARGUMENT = "InvalidArgument";
