@@ -29,7 +29,6 @@ class Constants
     const VISIBILITY_TIMEOUT = "VisibilityTimeout";
     const POLLING_WAIT_SECONDS = "PollingWaitSeconds";
     const MESSAGE_BODY = "MessageBody";
-    const MESSAGE_TAG = "MessageTag";
     const PRIORITY = "Priority";
     const MESSAGE_ID = "MessageId";
     const MESSAGE_BODY_MD5 = "MessageBodyMD5";
@@ -44,6 +43,8 @@ class Constants
     const ENDPOINT = "Endpoint";
     const STRATEGY = "NotifyStrategy";
     const CONTENT_FORMAT = "NotifyContentFormat";
+    const FILTER_TAG = "FilterTag";
+    const MESSAGE_TAG = "MessageTag";
     const LOGGING_BUCKET = "LoggingBucket";
     const LOGGING_ENABLED = "LoggingEnabled";
     const MESSAGE_ATTRIBUTES = "MessageAttributes";
@@ -57,7 +58,6 @@ class Constants
     const RECEIVER = "Receiver";
     const SMS_PARAMS = "SmsParams";
     const IMPORTANCE_LEVEL = "ImportanceLevel";
-    const FILTER_TAG = "FilterTag";
 
     // some MNS ErrorCodes
     const INVALID_ARGUMENT = "InvalidArgument";

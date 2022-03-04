@@ -20,16 +20,6 @@ trait MessagePropertiesForPublish
         $this->messageBody = $messageBody;
     }
 
-    public function getMessageTag()
-    {
-        return $this->messageTag;
-    }
-
-    public function setMessageTag($messageTag)
-    {
-        $this->messageTag = $messageTag;
-    }
-
     public function getMessageAttributes()
     {
         return $this->messageAttributes;
@@ -40,19 +30,29 @@ trait MessagePropertiesForPublish
         $this->messageAttributes = $messageAttributes;
     }
 
+    public function getMessageTag()
+    {
+        return $this->messageTag;
+    }
+
+    public function setMessageTag($messageTag)
+    {
+        $this->messageTag = $messageTag;
+    }
+
     public function writeMessagePropertiesForPublishXML(\XMLWriter $xmlWriter)
     {
         if ($this->messageBody != NULL)
         {
             $xmlWriter->writeElement(Constants::MESSAGE_BODY, $this->messageBody);
         }
-        if ($this->messageTag != NULL)
-        {
-            $xmlWriter->writeElement(Constants::MESSAGE_TAG, $this->messageTag);
-        }
         if ($this->messageAttributes !== NULL)
         {
             $this->messageAttributes->writeXML($xmlWriter);
+        }
+        if ($this->messageTag != NULL)
+        {
+            $xmlWriter->writeElement(Constants::MESSAGE_TAG, $this->messageTag);
         }
     }
 }

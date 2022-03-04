@@ -8,7 +8,6 @@ class SubscriptionAttributes
     private $endpoint;
     private $strategy;
     private $contentFormat;
-    private $filterTag;
 
     # may change in AliyunMNS\Topic
     private $topicName;
@@ -19,6 +18,8 @@ class SubscriptionAttributes
     private $createTime;
     private $lastModifyTime;
 
+    private  $filterTag;
+
     public function __construct(
         $subscriptionName = NULL,
         $endpoint = NULL,
@@ -27,7 +28,8 @@ class SubscriptionAttributes
         $topicName = NULL,
         $topicOwner = NULL,
         $createTime = NULL,
-        $lastModifyTime = NULL)
+        $lastModifyTime = NULL,
+        $filterTag = NULL)
     {
         $this->endpoint = $endpoint;
         $this->strategy = $strategy;
@@ -40,6 +42,8 @@ class SubscriptionAttributes
         $this->topicOwner = $topicOwner;
         $this->createTime = $createTime;
         $this->lastModifyTime = $lastModifyTime;
+
+        $this->filterTag=$filterTag;
     }
 
     public function getEndpoint()
@@ -72,16 +76,6 @@ class SubscriptionAttributes
         $this->contentFormat = $contentFormat;
     }
 
-    public function getFilterTag()
-    {
-        return $this->filterTag;
-    }
-
-    public function setFilterTag($filterTag)
-    {
-        $this->filterTag = $filterTag;
-    }
-
     public function getTopicName()
     {
         return $this->topicName;
@@ -112,6 +106,16 @@ class SubscriptionAttributes
         return $this->lastModifyTime;
     }
 
+    public function getFilterTag()
+    {
+        return $this->filterTag;
+    }
+
+    public function setFilterTag($filterTag)
+    {
+        $this->filterTag = $filterTag;
+    }
+
     public function writeXML(\XMLWriter $xmlWriter)
     {
         if ($this->endpoint != NULL)
@@ -137,10 +141,12 @@ class SubscriptionAttributes
         $endpoint = NULL;
         $strategy = NULL;
         $contentFormat = NULL;
-        $topicOwner = NULL;
         $topicName = NULL;
+        $subscriptionName = NULL;
+        $topicOwner = NULL;
         $createTime = NULL;
         $lastModifyTime = NULL;
+        $filterTag = NULL;
 
         while ($xmlReader->read())
         {
@@ -188,13 +194,6 @@ class SubscriptionAttributes
                         $contentFormat = $xmlReader->value;
                     }
                     break;
-                case 'FilterTag':
-                    $xmlReader->read();
-                    if ($xmlReader->nodeType == \XMLReader::TEXT)
-                    {
-                        $filterTag = $xmlReader->value;
-                    }
-                    break;
                 case 'CreateTime':
                     $xmlReader->read();
                     if ($xmlReader->nodeType == \XMLReader::TEXT)
@@ -209,6 +208,13 @@ class SubscriptionAttributes
                         $lastModifyTime = $xmlReader->value;
                     }
                     break;
+                case  'FilterTag':
+                    $xmlReader->read();
+                    if ($xmlReader->nodeType == \XMLReader::TEXT)
+                    {
+                        $filterTag = $xmlReader->value;
+                    }
+                    break;
                 }
             }
         }
@@ -221,8 +227,8 @@ class SubscriptionAttributes
             $topicName,
             $topicOwner,
             $createTime,
-            $lastModifyTime);
-        $attributes->setFilterTag($filterTag);
+            $lastModifyTime,
+            $filterTag);
         return $attributes;
     }
 }
